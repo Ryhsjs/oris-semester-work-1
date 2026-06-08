@@ -11,9 +11,6 @@ import java.util.Collection;
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-
-    List<Category> findAllByParentId(Long parentId);
-
     @Query("SELECT c FROM Recipe r JOIN r.categories c WHERE r.id = :recipeId")
     List<Category> findAllByRecipeId(@Param("recipeId") Long recipeId);
 

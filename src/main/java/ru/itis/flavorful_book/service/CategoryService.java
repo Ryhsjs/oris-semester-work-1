@@ -15,7 +15,5 @@ public interface CategoryService {
 
     List<Category> findAll();
 
-    List<Category> findByParentId(Long parentId);
-
     List<Category> findAllByRecipeId(Long recipeId);
 }

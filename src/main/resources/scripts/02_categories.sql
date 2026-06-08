@@ -12,55 +12,55 @@ INSERT INTO categories (name, description) VALUES
 ON CONFLICT (name) DO NOTHING;
 
 -- Подкатегории Завтраков
-INSERT INTO categories (name, description, parent_category_id) VALUES
-('Каши',               'Овсяная, гречневая, рисовая и другие каши',  (SELECT id FROM categories WHERE name = 'Завтраки')),
-('Омлеты и яичницы',   'Блюда из яиц на завтрак',                    (SELECT id FROM categories WHERE name = 'Завтраки')),
-('Блинчики и оладьи',  'Сладкие и несладкие варианты',               (SELECT id FROM categories WHERE name = 'Завтраки')),
-('Сэндвичи и тосты',   'Быстрые завтраки с хлебом',                  (SELECT id FROM categories WHERE name = 'Завтраки')),
-('Смузи-боулы',        'Густые смузи с топпингами',                   (SELECT id FROM categories WHERE name = 'Завтраки'))
+INSERT INTO categories (name, description) VALUES
+('Каши',               'Овсяная, гречневая, рисовая и другие каши'),
+('Омлеты и яичницы',   'Блюда из яиц на завтрак'),
+('Блинчики и оладьи',  'Сладкие и несладкие варианты'),
+('Сэндвичи и тосты',   'Быстрые завтраки с хлебом'),
+('Смузи-боулы',        'Густые смузи с топпингами')
 ON CONFLICT (name) DO NOTHING;
 
 -- Подкатегории Обедов
-INSERT INTO categories (name, description, parent_category_id) VALUES
-('Супы',            'Горячие и холодные супы',                  (SELECT id FROM categories WHERE name = 'Обеды')),
-('Крем-супы',       'Пюрированные супы-кремы',                  (SELECT id FROM categories WHERE name = 'Обеды')),
-('Гарниры',         'Рис, гречка, картофель, макароны',         (SELECT id FROM categories WHERE name = 'Обеды')),
-('Основные блюда',  'Мясные, рыбные, овощные блюда',           (SELECT id FROM categories WHERE name = 'Обеды')),
-('Паста и ризотто', 'Итальянские блюда из пасты и риса',        (SELECT id FROM categories WHERE name = 'Обеды'))
+INSERT INTO categories (name, description) VALUES
+('Супы',            'Горячие и холодные супы'),
+('Крем-супы',       'Пюрированные супы-кремы'),
+('Гарниры',         'Рис, гречка, картофель, макароны'),
+('Основные блюда',  'Мясные, рыбные, овощные блюда'),
+('Паста и ризотто', 'Итальянские блюда из пасты и риса')
 ON CONFLICT (name) DO NOTHING;
 
 -- Подкатегории Десертов
-INSERT INTO categories (name, description, parent_category_id) VALUES
-('Торты',           'Праздничные и повседневные торты',  (SELECT id FROM categories WHERE name = 'Десерты')),
-('Печенье',         'Домашнее печенье и пряники',        (SELECT id FROM categories WHERE name = 'Десерты')),
-('Пироги',          'Фруктовые и ягодные пироги',        (SELECT id FROM categories WHERE name = 'Десерты')),
-('Кексы и маффины', 'Небольшая сладкая выпечка',         (SELECT id FROM categories WHERE name = 'Десерты')),
-('Конфеты и трюфели', 'Домашние сладости без выпечки',   (SELECT id FROM categories WHERE name = 'Десерты')),
-('Мороженое',       'Домашнее мороженое и сорбеты',      (SELECT id FROM categories WHERE name = 'Десерты'))
+INSERT INTO categories (name, description) VALUES
+('Торты',           'Праздничные и повседневные торты'),
+('Печенье',         'Домашнее печенье и пряники'),
+('Пироги',          'Фруктовые и ягодные пироги'),
+('Кексы и маффины', 'Небольшая сладкая выпечка'),
+('Конфеты и трюфели', 'Домашние сладости без выпечки'),
+('Мороженое',       'Домашнее мороженое и сорбеты')
 ON CONFLICT (name) DO NOTHING;
 
 -- Подкатегории Выпечки
-INSERT INTO categories (name, description, parent_category_id) VALUES
-('Хлеб',      'Домашний хлеб на закваске и дрожжах',      (SELECT id FROM categories WHERE name = 'Выпечка')),
-('Пирожки',   'Жареные и печёные пирожки',                 (SELECT id FROM categories WHERE name = 'Выпечка')),
-('Пицца',     'Домашняя пицца с разными начинками',        (SELECT id FROM categories WHERE name = 'Выпечка')),
-('Булочки',   'Сдобные булочки, синнабоны, круассаны',     (SELECT id FROM categories WHERE name = 'Выпечка')),
-('Пироги',    'Закрытые и открытые пироги',                (SELECT id FROM categories WHERE name = 'Выпечка'))
+INSERT INTO categories (name, description) VALUES
+('Хлеб',      'Домашний хлеб на закваске и дрожжах'),
+('Пирожки',   'Жареные и печёные пирожки'),
+('Пицца',     'Домашняя пицца с разными начинками'),
+('Булочки',   'Сдобные булочки, синнабоны, круассаны'),
+('Пироги',    'Закрытые и открытые пироги')
 ON CONFLICT (name) DO NOTHING;
 
 -- Подкатегории Напитков
-INSERT INTO categories (name, description, parent_category_id) VALUES
-('Горячие напитки',   'Чай, кофе, какао, глинтвейн',          (SELECT id FROM categories WHERE name = 'Напитки')),
-('Смузи и соки',      'Свежевыжатые соки и смузи',             (SELECT id FROM categories WHERE name = 'Напитки')),
-('Лимонады',          'Освежающие безалкогольные напитки',      (SELECT id FROM categories WHERE name = 'Напитки')),
-('Коктейли',          'Праздничные и повседневные коктейли',    (SELECT id FROM categories WHERE name = 'Напитки'))
+INSERT INTO categories (name, description) VALUES
+('Горячие напитки',   'Чай, кофе, какао, глинтвейн'),
+('Смузи и соки',      'Свежевыжатые соки и смузи'),
+('Лимонады',          'Освежающие безалкогольные напитки'),
+('Коктейли',          'Праздничные и повседневные коктейли')
 ON CONFLICT (name) DO NOTHING;
 
 -- Подкатегории Закусок
-INSERT INTO categories (name, description, parent_category_id) VALUES
-('Салаты',            'Овощные, мясные и рыбные салаты',       (SELECT id FROM categories WHERE name = 'Закуски')),
-('Горячие закуски',   'Брускетты, жульены, тарталетки',        (SELECT id FROM categories WHERE name = 'Закуски')),
-('Намазки и паштеты', 'Хумус, паштет, гуакамоле',              (SELECT id FROM categories WHERE name = 'Закуски'))
+INSERT INTO categories (name, description) VALUES
+('Салаты',            'Овощные, мясные и рыбные салаты'),
+('Горячие закуски',   'Брускетты, жульены, тарталетки'),
+('Намазки и паштеты', 'Хумус, паштет, гуакамоле')
 ON CONFLICT (name) DO NOTHING;
 
 -- Специальные категории

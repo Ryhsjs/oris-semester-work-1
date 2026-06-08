@@ -57,8 +57,7 @@ CREATE TABLE IF NOT EXISTS categories
 (
     id                 BIGSERIAL PRIMARY KEY,
     name               VARCHAR(255) UNIQUE NOT NULL,
-    description        VARCHAR(255),
-    parent_category_id BIGINT
+    description        VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS recipe_ingredients
@@ -110,11 +109,6 @@ ALTER TABLE favorites
             REFERENCES recipes (id)
             ON DELETE CASCADE;
 
-ALTER TABLE categories
-    ADD CONSTRAINT fk_categories_parent_category_id
-        FOREIGN KEY (parent_category_id)
-            REFERENCES categories (id)
-            ON DELETE SET NULL;
 
 ALTER TABLE recipe_ingredients
     ADD CONSTRAINT fk_recipe_ingredients_recipe_id

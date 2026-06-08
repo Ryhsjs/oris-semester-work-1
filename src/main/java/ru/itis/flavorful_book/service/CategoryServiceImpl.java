@@ -71,14 +71,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Category> findByParentId(Long parentId) {
-        if (!categoryRepository.existsById(parentId))
-            throw new EntityNotFoundException("Категория с id=" + parentId + " не найдена");
-        return categoryRepository.findAllByParentId(parentId);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<Category> findAllByRecipeId(Long recipeId) {
         return categoryRepository.findAllByRecipeId(recipeId);
     }
