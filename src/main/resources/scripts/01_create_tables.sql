@@ -145,8 +145,8 @@ BEGIN
         UPDATE recipes
         SET rating = (SELECT ROUND(AVG(rating)::NUMERIC, 2)
                       FROM reviews
-                      WHERE recipe_id = COALESCE(new.recipe_id, old.recipe_id))
-        WHERE id = COALESCE(new.recipe_id, old.recipe_id);
+                      WHERE recipe_id = new.recipe_id)
+        WHERE id = new.recipe_id;
     END IF;
     RETURN COALESCE(new, old);
 END;
