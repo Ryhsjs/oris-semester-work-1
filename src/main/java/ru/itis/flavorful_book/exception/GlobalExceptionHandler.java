@@ -27,7 +27,21 @@ public class GlobalExceptionHandler {
                     .body(Map.of("error", ex.getMessage()));
         }
         response.setStatus(HttpStatus.FORBIDDEN.value());
+
         return new ModelAndView("errors/403");
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    public Object handleConflict(ConflictException ex,
+                                 HttpServletRequest request,
+                                 HttpServletResponse response) {
+        log.warn("Conflict: {}", ex.getMessage());
+        if (isApiRequest(request)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(Map.of("error", ex.getMessage()));
+        }
+        response.setStatus(HttpStatus.CONFLICT.value());
+        return new ModelAndView("errors/409");
     }
 
     @ExceptionHandler(EntityNotFoundException.class)

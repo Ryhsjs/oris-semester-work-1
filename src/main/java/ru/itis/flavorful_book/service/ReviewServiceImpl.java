@@ -3,8 +3,10 @@ package ru.itis.flavorful_book.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itis.flavorful_book.dto.ReviewDTO;
+import ru.itis.flavorful_book.entity.Recipe;
 import ru.itis.flavorful_book.entity.Review;
 import ru.itis.flavorful_book.exception.EntityNotFoundException;
+import ru.itis.flavorful_book.exception.ConflictException;
 import ru.itis.flavorful_book.exception.ForbiddenException;
 import ru.itis.flavorful_book.repository.ReviewRepository;
 
@@ -29,9 +31,16 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     @Transactional
     public void save(Long userId, Long recipeId, Integer rating, String comment) {
+        Recipe recipe = recipeService.getEntityById(recipeId);
+        if (recipe.getAuthor().getId().equals(userId)) {
+            throw new ConflictException("Нельзя оставить отзыв на свой рецепт");
+        }
+        if (reviewRepository.findByUser_IdAndRecipe_Id(userId, recipeId).isPresent()) {
+            throw new ConflictException("Вы уже оставляли отзыв на этот рецепт");
+        }
         Review review = new Review();
         review.setUser(userService.findById(userId));
-        review.setRecipe(recipeService.getEntityById(recipeId));
+        review.setRecipe(recipe);
         review.setRating(rating);
         review.setComment(comment);
         review.setCreatedAt(LocalDateTime.now());
@@ -40,7 +49,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public boolean update(Long id, Long userId, Integer rating, String comment) {
+    public void update(Long id, Long userId, Integer rating, String comment) {
         Review review = reviewRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Отзыв с id=" + id + " не найден"));
         if (!review.getUser().getId().equals(userId)) {
@@ -50,19 +59,17 @@ public class ReviewServiceImpl implements ReviewService {
         review.setComment(comment);
         review.setUpdatedAt(LocalDateTime.now());
         reviewRepository.save(review);
-        return true;
     }
 
     @Override
     @Transactional
-    public boolean deleteById(Long id, Long userId) {
+    public void deleteById(Long id, Long userId) {
         Review review = reviewRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Отзыв с id=" + id + " не найден"));
         if (!review.getUser().getId().equals(userId)) {
             throw new ForbiddenException("Нет прав на удаление отзыва");
         }
         reviewRepository.deleteById(id);
-        return true;
     }
 
     @Override
