@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-import ru.itis.flavorful_book.validation.PasswordsMatch;
+import ru.itis.flavorful_book.util.validation.PasswordsMatch;
 
 @Data
 @PasswordsMatch

@@ -14,7 +14,7 @@ import ru.itis.flavorful_book.dto.ReviewDTO;
 import ru.itis.flavorful_book.form.ReviewForm;
 import ru.itis.flavorful_book.security.CustomeUserDetails;
 import ru.itis.flavorful_book.service.ReviewService;
-import ru.itis.flavorful_book.util.ValidationUtils;
+import ru.itis.flavorful_book.util.validation.ValidationUtils;
 
 import java.util.List;
 

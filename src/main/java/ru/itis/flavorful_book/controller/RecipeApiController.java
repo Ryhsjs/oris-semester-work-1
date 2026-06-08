@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.itis.flavorful_book.form.RecipeForm;
 import ru.itis.flavorful_book.security.CustomeUserDetails;
 import ru.itis.flavorful_book.service.RecipeService;
-import ru.itis.flavorful_book.util.ValidationUtils;
+import ru.itis.flavorful_book.util.validation.ValidationUtils;
 
 import java.util.Map;
 

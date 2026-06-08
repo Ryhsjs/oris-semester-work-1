@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import ru.itis.flavorful_book.util.StringToUnitConverter;
+import ru.itis.flavorful_book.util.converter.StringToUnitConverter;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {

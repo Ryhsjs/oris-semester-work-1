@@ -1,4 +1,4 @@
-package ru.itis.flavorful_book.validation;
+package ru.itis.flavorful_book.util.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

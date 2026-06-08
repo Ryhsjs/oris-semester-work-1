@@ -1,4 +1,4 @@
-package ru.itis.flavorful_book.util;
+package ru.itis.flavorful_book.util.converter;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

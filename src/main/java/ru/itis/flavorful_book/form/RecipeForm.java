@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import ru.itis.flavorful_book.dto.IngredientDTO;
-import ru.itis.flavorful_book.validation.CookingTimeValid;
+import ru.itis.flavorful_book.util.validation.CookingTimeValid;
 
 import java.util.ArrayList;
 import java.util.List;

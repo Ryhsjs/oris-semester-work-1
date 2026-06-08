@@ -1,4 +1,4 @@
-package ru.itis.flavorful_book.util;
+package ru.itis.flavorful_book.util.validation;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
