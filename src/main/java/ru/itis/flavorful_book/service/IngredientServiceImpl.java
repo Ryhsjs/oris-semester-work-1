@@ -1,6 +1,7 @@
 package ru.itis.flavorful_book.service;
 
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itis.flavorful_book.entity.Ingredient;
@@ -36,7 +37,7 @@ public class IngredientServiceImpl implements IngredientService {
     @Cacheable("ingredients")
     @Transactional(readOnly = true)
     public List<Ingredient> findAll() {
-        return ingredientRepository.findAll();
+        return ingredientRepository.findAll(Sort.by("name"));
     }
 
     @Override

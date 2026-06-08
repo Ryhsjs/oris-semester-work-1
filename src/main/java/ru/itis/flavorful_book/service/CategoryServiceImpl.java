@@ -1,6 +1,7 @@
 package ru.itis.flavorful_book.service;
 
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itis.flavorful_book.entity.Category;
@@ -65,7 +66,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Cacheable("categories")
     @Transactional(readOnly = true)
     public List<Category> findAll() {
-        return categoryRepository.findAll();
+        return categoryRepository.findAll(Sort.by("name"));
     }
 
     @Override
