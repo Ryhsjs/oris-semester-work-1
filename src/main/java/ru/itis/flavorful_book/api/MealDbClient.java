@@ -34,13 +34,11 @@ public class MealDbClient {
 
         try (Response response = httpClient.newCall(request).execute()) {
             if (!response.isSuccessful() || response.body() == null) {
-                log.warn("TheMealDB вернул неуспешный ответ: {}", response.code());
                 return Optional.empty();
             }
             String body = response.body().string();
             return parseMeal(body);
         } catch (IOException e) {
-            log.warn("Ошибка при обращении к TheMealDB: {}", e.getMessage());
             return Optional.empty();
         }
     }
@@ -64,7 +62,6 @@ public class MealDbClient {
                     meal.path("strSource").asText(null)
             ));
         } catch (Exception e) {
-            log.warn("Ошибка при разборе ответа TheMealDB: {}", e.getMessage());
             return Optional.empty();
         }
     }
