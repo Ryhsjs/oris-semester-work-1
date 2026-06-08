@@ -3,7 +3,7 @@ package ru.itis.flavorful_book.service;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ru.itis.flavorful_book.api.MealDbClient;
-import ru.itis.flavorful_book.api.dto.ExternalMealDTO;
+import ru.itis.flavorful_book.dto.ExternalMealDTO;
 
 @Service
 public class ExternalRecipeServiceImpl implements ExternalRecipeService {

@@ -3,7 +3,7 @@ package ru.itis.flavorful_book.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.itis.flavorful_book.api.dto.ExternalMealDTO;
+import ru.itis.flavorful_book.dto.ExternalMealDTO;
 import ru.itis.flavorful_book.service.ExternalRecipeService;
 
 import java.util.HashMap;

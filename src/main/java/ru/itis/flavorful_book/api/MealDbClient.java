@@ -8,7 +8,7 @@ import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import ru.itis.flavorful_book.api.dto.ExternalMealDTO;
+import ru.itis.flavorful_book.dto.ExternalMealDTO;
 
 import java.io.IOException;
 import java.util.Optional;
