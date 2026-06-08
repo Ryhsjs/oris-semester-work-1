@@ -3,10 +3,11 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <header class="fr page-header">
     <div class="container fr header-container">
-        <div class="fr icon-text-container pointer" onclick="goTo('/')">
-            <i class="fa-solid fa-utensils fa-3x logo"></i>
-            <h1>Вкусный букварь</h1>
-        </div>
+<%--        <div class="fr icon-text-container pointer" onclick="goTo('/')">--%>
+<%--            <i class="fa-solid fa-utensils fa-3x logo"></i>--%>
+<%--            <h1>Вкусный букварь</h1>--%>
+<%--        </div>--%>
+        <t:logo/>
 
         <ul class="fr header-navigation">
             <c:choose>
