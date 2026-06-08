@@ -17,7 +17,7 @@ public interface RecipeService {
 
     void updateViews(Long id);
 
-    boolean deleteById(Long id, Long userId);
+    void deleteById(Long id, Long userId);
 
     boolean isOwner(Long recipeId, Long userId);
 

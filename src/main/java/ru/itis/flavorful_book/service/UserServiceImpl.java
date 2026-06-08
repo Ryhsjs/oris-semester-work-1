@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public boolean update(Long id, String username, String avatarUrl) {
+    public void update(Long id, String username, String avatarUrl) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Пользователь с id=" + id + " не найден"));
 
@@ -58,7 +58,6 @@ public class UserServiceImpl implements UserService {
         user.setUsername(username);
         user.setAvatarUrl(avatarUrl);
         userRepository.save(user);
-        return true;
     }
 
     @Override

@@ -93,14 +93,13 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     @CacheEvict(value = "recipes", allEntries = true)
     @Transactional
-    public boolean deleteById(Long id, Long userId) {
+    public void deleteById(Long id, Long userId) {
         Recipe recipe = recipeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Рецепт с id=" + id + " не найден"));
         if (!recipe.getAuthor().getId().equals(userId)) {
             throw new ForbiddenException("Нет прав на удаление рецепта");
         }
         recipeRepository.deleteById(id);
-        return true;
     }
 
     @Override

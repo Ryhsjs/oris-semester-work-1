@@ -1,11 +1,12 @@
 package ru.itis.flavorful_book.exception;
 
+import lombok.Getter;
+
+@Getter
 public class IllegalUserArgumentException extends RuntimeException {
     private String usernameState;
 
     private String emailState;
-
-    private String passwordState;
 
     private boolean shouldThrow;
 
@@ -14,13 +15,8 @@ public class IllegalUserArgumentException extends RuntimeException {
 
         usernameState = null;
         emailState = null;
-        passwordState = null;
 
         shouldThrow = false;
-    }
-
-    public String getUsernameState() {
-        return usernameState;
     }
 
     public void setUsernameState(String usernameState) {
@@ -30,30 +26,10 @@ public class IllegalUserArgumentException extends RuntimeException {
         }
     }
 
-    public String getEmailState() {
-        return emailState;
-
-    }
-
     public void setEmailState(String emailState) {
         if (emailState != null) {
             this.emailState = emailState;
             shouldThrow = true;
         }
-    }
-
-    public String getPasswordState() {
-        return passwordState;
-    }
-
-    public void setPasswordState(String passwordState) {
-        if (passwordState != null) {
-            this.passwordState = passwordState;
-            shouldThrow = true;
-        }
-    }
-
-    public boolean isShouldThrow() {
-        return shouldThrow;
     }
 }

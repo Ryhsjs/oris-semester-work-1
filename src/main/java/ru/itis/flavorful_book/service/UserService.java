@@ -7,7 +7,7 @@ import ru.itis.flavorful_book.form.SignupForm;
 public interface UserService extends UserDetailsService {
     void register(SignupForm form);
 
-    boolean update(Long id, String username, String avatarUrl);
+    void update(Long id, String username, String avatarUrl);
 
     User findById(Long id);
 }

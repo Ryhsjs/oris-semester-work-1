@@ -1,5 +1,8 @@
 package ru.itis.flavorful_book.entity.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Unit {
     GRAMS("г"),
     KILOGRAMS("кг"),
@@ -17,11 +20,8 @@ public enum Unit {
 
     private final String unit;
 
-    private Unit(String unit) {
+    Unit(String unit) {
         this.unit = unit;
     }
 
-    public String getUnit() {
-        return unit;
-    }
 }

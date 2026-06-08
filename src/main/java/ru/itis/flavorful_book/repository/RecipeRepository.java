@@ -1,5 +1,6 @@
 package ru.itis.flavorful_book.repository;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,8 +20,9 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long>, RecipeRep
     @EntityGraph(attributePaths = "author")
     List<Recipe> findAllByAuthor_IdOrderByCreatedAtDesc(Long authorId);
 
+    @NotNull
     @EntityGraph(attributePaths = "author")
-    Optional<Recipe> findById(Long id);
+    Optional<Recipe> findById(@NotNull Long id);
 
     @EntityGraph(attributePaths = "author")
     @Query("SELECT DISTINCT r FROM User u JOIN u.favorites r JOIN FETCH r.author WHERE u.id = :userId ORDER BY r.createdAt DESC")
