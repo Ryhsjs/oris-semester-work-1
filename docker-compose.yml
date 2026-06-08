@@ -46,8 +46,7 @@ services:
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
     volumes:
-      - flavorful_book_uploads:/uploads
+      - ./uploads:/uploads
 
 volumes:
   flavorful_book_postgres_data:
-  flavorful_book_uploads:
