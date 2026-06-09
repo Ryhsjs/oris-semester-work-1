@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,13 +22,10 @@ import java.util.List;
 @Tag(name = "Отзывы", description = "Управление отзывами к рецептам")
 @RestController
 @RequestMapping("/recipes/{recipeId}/reviews")
+@RequiredArgsConstructor
 public class ReviewController {
 
     private final ReviewService reviewService;
-
-    public ReviewController(ReviewService reviewService) {
-        this.reviewService = reviewService;
-    }
 
     @Operation(
         summary = "Получить все отзывы к рецепту",

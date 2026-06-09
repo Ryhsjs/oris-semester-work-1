@@ -1,5 +1,6 @@
 package ru.itis.flavorful_book.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +14,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/image")
+@RequiredArgsConstructor
 public class ImageController {
 
     private final ImageService imageService;
-
-    public ImageController(ImageService imageService) {
-        this.imageService = imageService;
-    }
 
     @PostMapping("/recipe")
     public ResponseEntity<?> uploadRecipeImage(@RequestParam("image") MultipartFile file) {

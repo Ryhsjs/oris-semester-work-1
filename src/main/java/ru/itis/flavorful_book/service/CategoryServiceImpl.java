@@ -5,7 +5,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itis.flavorful_book.entity.Category;
-import ru.itis.flavorful_book.exception.EntityNotFoundException;
 import ru.itis.flavorful_book.repository.CategoryRepository;
 
 import java.util.HashSet;

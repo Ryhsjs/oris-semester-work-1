@@ -1,6 +1,7 @@
 package ru.itis.flavorful_book.controller;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,13 +12,10 @@ import ru.itis.flavorful_book.form.SignupForm;
 import ru.itis.flavorful_book.service.UserService;
 
 @Controller
+@RequiredArgsConstructor
 public class AuthController {
 
     private final UserService userService;
-
-    public AuthController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("/login")
     public String loginPage() {

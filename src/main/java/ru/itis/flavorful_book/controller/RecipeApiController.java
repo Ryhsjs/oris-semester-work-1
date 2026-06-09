@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,13 +21,10 @@ import java.util.Map;
 @Tag(name = "Рецепты", description = "Создание, обновление и удаление рецептов")
 @RestController
 @RequestMapping("/recipes")
+@RequiredArgsConstructor
 public class RecipeApiController {
 
     private final RecipeService recipeService;
-
-    public RecipeApiController(RecipeService recipeService) {
-        this.recipeService = recipeService;
-    }
 
     @Operation(
         summary = "Создать рецепт",

@@ -1,6 +1,7 @@
 package ru.itis.flavorful_book.controller;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,15 +16,12 @@ import ru.itis.flavorful_book.service.UserService;
 
 @Controller
 @RequestMapping("/profile")
+@RequiredArgsConstructor
 public class ProfileController {
 
     private final UserService userService;
-    private final RecipeService recipeService;
 
-    public ProfileController(UserService userService, RecipeService recipeService) {
-        this.userService = userService;
-        this.recipeService = recipeService;
-    }
+    private final RecipeService recipeService;
 
     @GetMapping
     public String profilePage(@RequestParam(required = false, defaultValue = "my") String section,

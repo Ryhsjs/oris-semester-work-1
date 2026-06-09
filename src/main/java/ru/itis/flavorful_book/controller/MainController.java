@@ -1,5 +1,6 @@
 package ru.itis.flavorful_book.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
+@RequiredArgsConstructor
 public class MainController {
 
     private final ExternalRecipeService externalRecipeService;
-
-    public MainController(ExternalRecipeService externalRecipeService) {
-        this.externalRecipeService = externalRecipeService;
-    }
 
     @GetMapping("/")
     public String welcomePage(Model model) {

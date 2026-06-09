@@ -1,5 +1,9 @@
 package ru.itis.flavorful_book.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.cache.annotation.CachingConfigurer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -17,13 +21,24 @@ import java.util.Map;
 @EnableCaching
 public class CacheConfig implements CachingConfigurer {
 
+    private static ObjectMapper redisObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        mapper.activateDefaultTyping(
+                LaissezFaireSubTypeValidator.instance,
+                ObjectMapper.DefaultTyping.EVERYTHING
+        );
+        return mapper;
+    }
+
     private RedisCacheConfiguration cacheConfig(Duration ttl) {
         return RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(ttl)
                 .disableCachingNullValues()
                 .serializeValuesWith(
                         RedisSerializationContext.SerializationPair.fromSerializer(
-                                new GenericJackson2JsonRedisSerializer()
+                                new GenericJackson2JsonRedisSerializer(redisObjectMapper())
                         )
                 );
     }

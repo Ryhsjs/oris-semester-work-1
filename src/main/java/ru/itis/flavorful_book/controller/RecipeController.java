@@ -1,5 +1,6 @@
 package ru.itis.flavorful_book.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,22 +21,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/recipes")
+@RequiredArgsConstructor
 public class RecipeController {
 
     private final RecipeService recipeService;
     private final CategoryService categoryService;
     private final IngredientRecipeService ingredientRecipeService;
     private final ReviewService reviewService;
-
-    public RecipeController(RecipeService recipeService,
-                            CategoryService categoryService,
-                            IngredientRecipeService ingredientRecipeService,
-                            ReviewService reviewService) {
-        this.recipeService = recipeService;
-        this.categoryService = categoryService;
-        this.ingredientRecipeService = ingredientRecipeService;
-        this.reviewService = reviewService;
-    }
 
     @GetMapping
     public String recipeListPage(
