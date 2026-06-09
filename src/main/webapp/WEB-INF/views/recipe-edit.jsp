@@ -30,35 +30,32 @@
                 </label>
             </div>
 
-            <div>
-                <label for="title">
+            <div class="stats-grid">
+                <label for="title" style="grid-area: title">
                     <input class="title-input" name="title" id="title" type="text" required
                            placeholder="Введите название"
                            value="${not empty recipe ? recipe.title() : ''}">
                 </label>
+                <p style="grid-area: tctp">Общее время готовки (мин):</p>
+                <label for="totalCookingTime" style="grid-area: tctv">
+                    <input class="full-width" type="number" name="totalCookingTime"
+                           id="totalCookingTime" min="0" max="1440" required
+                           value="${not empty recipe ? recipe.totalCookingTime() : ''}">
+                </label>
 
-                <div class="stats-grid">
-                    <p>Общее время готовки (мин):</p>
-                    <label for="totalCookingTime">
-                        <input class="full-width" type="number" name="totalCookingTime"
-                               id="totalCookingTime" min="0" max="1440" required
-                               value="${not empty recipe ? recipe.totalCookingTime() : ''}">
-                    </label>
+                <p style="grid-area: actp">Активное время готовки (мин):</p>
+                <label for="activeCookingTime" style="grid-area: actv">
+                    <input class="full-width" type="number" name="activeCookingTime"
+                           id="activeCookingTime" min="0" max="1440" required
+                           value="${not empty recipe ? recipe.activeCookingTime() : ''}">
+                </label>
 
-                    <p>Активное время готовки (мин):</p>
-                    <label for="activeCookingTime">
-                        <input class="full-width" type="number" name="activeCookingTime"
-                               id="activeCookingTime" min="0" max="1440" required
-                               value="${not empty recipe ? recipe.activeCookingTime() : ''}">
-                    </label>
-
-                    <p>Количество порций:</p>
-                    <label for="servings">
-                        <input class="full-width" type="number" name="servings"
-                               id="servings" min="0" max="100" required
-                               value="${not empty recipe ? recipe.servings() : ''}">
-                    </label>
-                </div>
+                <p style="grid-area: sp">Количество порций:</p>
+                <label for="servings" style="grid-area: sv">
+                    <input class="full-width" type="number" name="servings"
+                           id="servings" min="0" max="100" required
+                           value="${not empty recipe ? recipe.servings() : ''}">
+                </label>
             </div>
         </section>
     </header>
@@ -78,7 +75,8 @@
             <script>
                 const existingCategories = <c:choose>
                     <c:when test="${not empty recipe}">${recipe.categories()}</c:when>
-                    <c:otherwise>[]</c:otherwise>
+                        <c:otherwise>[]
+                </c:otherwise>
                 </c:choose>
             </script>
         </div>

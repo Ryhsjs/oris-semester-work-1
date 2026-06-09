@@ -522,6 +522,8 @@ body.no-scroll {
     display: grid;
     align-items: center;
     grid-template-columns: minmax(auto, 250px) 100px;
+    /*grid-template-rows: repeat(4, auto);*/
+    grid-template-areas: "title title" "tctp tctv" "actp actv" "sp sv";
     gap: 10px;
     margin: 10px 0;
 }
