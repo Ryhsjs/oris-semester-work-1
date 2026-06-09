@@ -7,19 +7,19 @@ import java.time.LocalDateTime;
 public record ReviewDTO(
         Long id,
         Long userId,
-        Long recipeId,
+        String recipeTitle,
         Integer rating,
         String comment,
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
         String username,
-        String avatarUrl
+        String userAvatarUrl
 ) {
     public static ReviewDTO from(Review review) {
         return new ReviewDTO(
                 review.getId(),
                 review.getUser().getId(),
-                review.getRecipe().getId(),
+                review.getRecipe().getTitle(),
                 review.getRating(),
                 review.getComment(),
                 review.getCreatedAt(),
