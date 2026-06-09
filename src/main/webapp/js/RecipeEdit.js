@@ -156,8 +156,8 @@ class RecipeEdit {
         };
 
         const url = isNew
-            ? CONTEXT_PATH + '/recipes'
-            : CONTEXT_PATH + '/recipes/' + recipeId;
+            ? CONTEXT_PATH + '/api/recipes'
+            : CONTEXT_PATH + '/api/recipes/' + recipeId;
 
         fetch(url, {
             method: isNew ? 'POST' : 'PUT',

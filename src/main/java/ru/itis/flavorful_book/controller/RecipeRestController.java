@@ -20,9 +20,9 @@ import java.util.Map;
 
 @Tag(name = "Рецепты", description = "Создание, обновление и удаление рецептов")
 @RestController
-@RequestMapping("/recipes")
+@RequestMapping("/api/recipes")
 @RequiredArgsConstructor
-public class RecipeApiController {
+public class RecipeRestController {
 
     private final RecipeService recipeService;
 

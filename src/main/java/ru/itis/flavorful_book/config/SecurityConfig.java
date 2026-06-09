@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .requestMatchers("/login", "/signup", "/error").permitAll()
                 .requestMatchers("/WEB-INF/**", "/css/**", "/js/**", "/uploads/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/", "/recipes", "/recipes/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/", "/recipes", "/recipes/**", "/api/recipes/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

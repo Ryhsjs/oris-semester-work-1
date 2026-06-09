@@ -13,7 +13,7 @@ async function deleteRecipe(id) {
     const result = confirm("Вы уверены, что хотите удалить этот рецепт?");
 
     if (result) {
-        const response = await fetch(CONTEXT_PATH + '/recipes/' + id, {
+        const response = await fetch(CONTEXT_PATH + '/api/recipes/' + id, {
             method: 'DELETE',
             headers: { 'X-XSRF-TOKEN': getCsrfToken() }
         });
@@ -29,7 +29,7 @@ async function deleteReview(id) {
 
     if (result) {
         const recipeId = getRecipeIdFromPath();
-        const response = await fetch(CONTEXT_PATH + '/recipes/' + recipeId + '/reviews/' + id, {
+        const response = await fetch(CONTEXT_PATH + '/api/recipes/' + recipeId + '/reviews/' + id, {
             method: 'DELETE',
             headers: { 'X-XSRF-TOKEN': getCsrfToken() }
         });
@@ -68,7 +68,7 @@ function goTo(path, params = {}) {
 
 async function addToFavorites() {
     const recipeId = getRecipeIdFromPath();
-    await fetch(CONTEXT_PATH + '/recipes/' + recipeId + '/favorites', {
+    await fetch(CONTEXT_PATH + '/api/recipes/' + recipeId + '/favorites', {
         method: 'POST',
         headers: { 'X-XSRF-TOKEN': getCsrfToken() }
     });
@@ -77,7 +77,7 @@ async function addToFavorites() {
 
 async function removeFromFavorites() {
     const recipeId = getRecipeIdFromPath();
-    await fetch(CONTEXT_PATH + '/recipes/' + recipeId + '/favorites', {
+    await fetch(CONTEXT_PATH + '/api/recipes/' + recipeId + '/favorites', {
         method: 'DELETE',
         headers: { 'X-XSRF-TOKEN': getCsrfToken() }
     });
@@ -152,7 +152,7 @@ async function uploadImage() {
     const formData = new FormData();
     formData.append('image', file);
 
-    const response = await fetch(CONTEXT_PATH + '/image/' + type, {
+    const response = await fetch(CONTEXT_PATH + '/api/image/' + type, {
         method: 'POST',
         headers: { 'X-XSRF-TOKEN': getCsrfToken() },
         body: formData
@@ -174,8 +174,8 @@ async function submitReview() {
 
     const isNew = !reviewId;
     const url = isNew
-        ? CONTEXT_PATH + '/recipes/' + recipeId + '/reviews'
-        : CONTEXT_PATH + '/recipes/' + recipeId + '/reviews/' + reviewId;
+        ? CONTEXT_PATH + '/api/recipes/' + recipeId + '/reviews'
+        : CONTEXT_PATH + '/api/recipes/' + recipeId + '/reviews/' + reviewId;
 
     const response = await fetch(url, {
         method: isNew ? 'POST' : 'PUT',
